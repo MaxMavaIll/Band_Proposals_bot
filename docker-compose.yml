@@ -2,11 +2,11 @@ version: '3.8'  # Версія формату docker-compose
 
 services:  # Список сервісів (контейнерів), які будуть запущені
   bot:  # Назва сервісу
-    image: Proposals_Band
+    image: proposals_band
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: Proposals_Band
+    container_name: proposals_band
     volumes:
       - .:/app/
       - /etc/localtime:/etc/localtime:ro
