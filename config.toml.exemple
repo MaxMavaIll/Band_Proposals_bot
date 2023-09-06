@@ -1,0 +1,20 @@
+##############################################################
+#                        logging                             #
+##############################################################
+[logging]
+
+max_log_size = 10
+backup_count = 1
+
+[telegram_bot]
+
+BOT_TOKEN = ""
+ADMINS = ["1864853069"]
+
+[proposal]
+path = './bin/'
+time_sleep = 1
+
+network = ""
+node = ""
+explorer = ""

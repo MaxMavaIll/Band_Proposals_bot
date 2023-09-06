@@ -1,0 +1,13 @@
+[Unit]
+Description=Vote
+After=network.target
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/.script_node/Gov_vote_bot/
+ExecStart=/root/.script_node/Gov_vote_bot/venv/bin/python /root/.script_node/Gov_vote_bot/main.py
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+[Install]
+WantedBy=multi-user.target
