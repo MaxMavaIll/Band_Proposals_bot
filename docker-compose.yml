@@ -9,7 +9,6 @@ services:  # Список сервісів (контейнерів), які бу
     container_name: proposals_band
     volumes:
       - .:/app/
-      - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
 
 

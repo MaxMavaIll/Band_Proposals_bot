@@ -1,32 +1,26 @@
-Proposer.proposal 2023-09-06 16:01:38,791 INFO START
-Proposer.proposal 2023-09-06 16:01:38,792 ERROR Proposer:
+Proposer.proposal 2023-09-06 14:34:41,919 INFO START
+Proposer.proposal 2023-09-06 14:34:41,928 ERROR ID: 1 Band -> error Terminal
 Traceback (most recent call last):
-  File "/Users/illya/Documents/Program/Proposer_Band/Proposer/proposal.py", line 182, in Proposer
-    bin=config_toml['proposal']["bin"],
-KeyError: 'bin'
-Proposer.proposal 2023-09-06 16:02:24,208 INFO START
-Proposer.proposal 2023-09-06 16:02:24,225 ERROR ID: 1 Band -> error Terminal
-Traceback (most recent call last):
-  File "/Users/illya/Documents/Program/Proposer_Band/Proposer/proposal.py", line 152, in terminal
+  File "/app/Proposer/proposal.py", line 152, in terminal
     p2 = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=p1.stdout)
-  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/subprocess.py", line 969, in __init__
+  File "/usr/local/lib/python3.10/subprocess.py", line 971, in __init__
     self._execute_child(args, executable, preexec_fn, close_fds,
-  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/subprocess.py", line 1845, in _execute_child
+  File "/usr/local/lib/python3.10/subprocess.py", line 1863, in _execute_child
     raise child_exception_type(errno_num, err_msg, err_filename)
 FileNotFoundError: [Errno 2] No such file or directory: './bin/bandd'
-Proposer.proposal 2023-09-06 16:02:24,228 ERROR ID: 1 Band -> Ця команда отримала не dict формат:
+Proposer.proposal 2023-09-06 14:34:42,166 ERROR ID: 1 Band -> Ця команда отримала не dict формат:
 Проблима з бінарником термінал не зміг знайти щось на сервері
-Proposer.proposal 2023-09-06 16:02:24,228 WARNING ID: 1 Band -> Вертаю []
-Proposer.proposal 2023-09-06 16:02:37,551 INFO START
-Proposer.proposal 2023-09-06 16:02:37,557 ERROR ID: 1 Band -> error Terminal
+Proposer.proposal 2023-09-06 14:34:42,171 WARNING ID: 1 Band -> Вертаю []
+Proposer.proposal 2023-09-06 14:35:26,683 INFO START
+Proposer.proposal 2023-09-06 14:35:26,689 ERROR ID: 1 Band -> error Terminal
 Traceback (most recent call last):
-  File "/Users/illya/Documents/Program/Proposer_Band/Proposer/proposal.py", line 152, in terminal
+  File "/app/Proposer/proposal.py", line 152, in terminal
     p2 = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=p1.stdout)
-  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/subprocess.py", line 969, in __init__
+  File "/usr/local/lib/python3.10/subprocess.py", line 971, in __init__
     self._execute_child(args, executable, preexec_fn, close_fds,
-  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/subprocess.py", line 1845, in _execute_child
+  File "/usr/local/lib/python3.10/subprocess.py", line 1863, in _execute_child
     raise child_exception_type(errno_num, err_msg, err_filename)
 FileNotFoundError: [Errno 2] No such file or directory: './bin/bandd'
-Proposer.proposal 2023-09-06 16:02:37,560 ERROR ID: 1 Band -> Ця команда отримала не dict формат:
+Proposer.proposal 2023-09-06 14:35:26,994 ERROR ID: 1 Band -> Ця команда отримала не dict формат:
 Проблима з бінарником термінал не зміг знайти щось на сервері
-Proposer.proposal 2023-09-06 16:02:37,560 WARNING ID: 1 Band -> Вертаю []
+Proposer.proposal 2023-09-06 14:35:26,996 WARNING ID: 1 Band -> Вертаю []

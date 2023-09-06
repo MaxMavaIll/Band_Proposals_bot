@@ -28,7 +28,7 @@ class Proposal:
         self.name_network = name_network
         self.node = node if node == "" else ("--node " + node)
 
-    def GetNewProposals(
+    async def GetNewProposals(
             self, 
             status: str = None, 
             reverse: bool = None,
@@ -61,7 +61,7 @@ class Proposal:
         if limit:
             cmd += self.add_to_cmd_command("limit", limit)
 
-        answer = self.terminal(cmd)
+        answer = await self.terminal(cmd)
 
         if not answer['ok']:
             log.error(f"ID: {self.log_id} {self.name_network} -> Ця команда отримала не dict формат:\n{answer['answer']}")
@@ -75,7 +75,7 @@ class Proposal:
         if ids != {}:
             
             for id in work_json_users["users"]:
-                self.bot.send_message(chat_id=id, text="🟩 NEW Proposals 🟩")
+                await self.bot.send_message(chat_id=id, text="🟩 NEW Proposals 🟩")
 
         return ids.items()
     
@@ -139,7 +139,7 @@ class Proposal:
     def add_to_cmd_command(self, variable: str, value: str|int|bool, ) -> str:
         return f" --{variable} {value}"
 
-    def terminal(
+    async def terminal(
             self, 
             cmd: str = None, 
             password: str = "Not password",
@@ -166,7 +166,7 @@ class Proposal:
             message += traceback.format_exc()
             
             for id in config_toml['telegram_bot']['ADMINS']:
-                    self.bot.send_message(chat_id = id, text=message)
+                await self.bot.send_message(chat_id = id, text=message)
 
             return {'ok': False, 'answer': "Проблима з бінарником термінал не зміг знайти щось на сервері"}
     
@@ -184,14 +184,14 @@ async def Proposer(bot: Bot):
             node=config_toml['proposal']["node"]
         )
 
-        for proposal_id, data in proposer.GetNewProposals(
+        for proposal_id, data in await proposer.GetNewProposals(
             status="PROPOSAL_STATUS_VOTING_PERIOD",
             limit=20
             ):
 
             message = proposer.create_text(proposal_id=proposal_id, data=data)
             for id in work_json_users['users']:
-                bot.send_message(chat_id=id, text=message)
+                await bot.send_message(chat_id=id, text=message)
                 
                 data = work_json.get_json()
                 data[id][network].append(proposal_id)
@@ -208,4 +208,4 @@ async def Proposer(bot: Bot):
         
        
         for id in config_toml['telegram_bot']['ADMINS']:
-            bot.send_message(chat_id=id, text=message)
+            await bot.send_message(chat_id=id, text=message)
