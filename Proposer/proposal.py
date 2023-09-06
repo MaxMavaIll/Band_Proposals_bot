@@ -174,7 +174,7 @@ class Proposal:
 async def Proposer(bot: Bot):
     log_id = work_json_id.get_json()['id']
     network =  config_toml['proposal']["network"]
-
+    log.info("START")
     try:
         proposer = Proposal(
             log_id=log_id,

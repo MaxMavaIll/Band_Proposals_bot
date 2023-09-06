@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from distutils.command.config import config
+# from distutils.command.config import config
 from datetime import datetime
 
 from aiogram import Bot, Dispatcher, types
@@ -44,7 +44,7 @@ async def main():
                     next_run_time=datetime.now(),
                     replace_existing=True
                 )
-
+    scheduler.start()
     
     await dp.start_polling(bot)
 
