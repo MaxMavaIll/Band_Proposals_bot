@@ -9,6 +9,7 @@ services:  # Список сервісів (контейнерів), які бу
     container_name: proposals_band
     volumes:
       - .:/app/
+      - /home/ubuntu/go:/home/ubuntu/go
     restart: unless-stopped
 
 

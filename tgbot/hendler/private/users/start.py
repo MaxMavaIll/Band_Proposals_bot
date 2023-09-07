@@ -30,12 +30,12 @@ async def start( message: Message, state: FSMContext):
     if message.from_user.id not in user_dict['users']:
         log.info(f"New user: {message.from_user.id}")
         user_dict['users'].append(message.from_user.id)
-        await message.answer(f"Hello, user {message.from_user.first_name}. You will now receive voting proposals!!\n"
-                             "if you want to stop tracking offers, run the following command /delete")
+        await message.answer(f"Hello, user {message.from_user.first_name}. You will now receive voting proposals👌!!\n"
+                             "If you want to stop tracking offers, run the following command /delete")
     
     else:
         await message.answer(f"Hello, user {message.from_user.first_name}. You are already registered.\n"
-                             "if you want to stop tracking proposals, run the following command /delete")
+                             "If you want to stop tracking proposals, run the following command /delete")
 
     log.info(f"Tracking List Now: {user_dict['users']}")
 
@@ -49,11 +49,11 @@ async def delete( message: Message, state: FSMContext):
     if message.from_user.id in user_dict['users']:
         log.info(f"Delete user: {message.from_user.id}")
         user_dict['users'].remove(message.from_user.id)
-        await message.answer(f"I deleted you. Now you will not receive proposals\n"
-                             "if you want to start tracking proposals, run the following command /start")
+        await message.answer(f"I deleted you. Now you will not receive proposals👌\n"
+                             "If you want to start tracking proposals, run the following command /start")
     else:
         await message.answer(f"you are not on the list\n"
-                             "if you want to start tracking proposals, run the following command /start")
+                             "If you want to start tracking proposals, run the following command /start")
     
     log.info(f"Tracking List Now: {user_dict['users']}")
     

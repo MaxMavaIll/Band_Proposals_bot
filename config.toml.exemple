@@ -20,7 +20,7 @@ ADMINS = [1864853069] # <= int
 #                 Proposal Config                            #
 ##############################################################
 [proposal]
-path = './bin/'
+path = '/home/ubuntu/go/bin/'
 time_sleep = 60 # <= minutes
 
 network = ""
