@@ -11,9 +11,11 @@ from Scheduler.base import setup_scheduler
 from Proposer.proposal import Proposer
 from apscheduler.triggers.interval import IntervalTrigger
 
+import toml
+
 logger = logging.getLogger(__name__)
 
-
+config_toml = toml.load("config.toml")
 
 
 async def main():
@@ -31,16 +33,13 @@ async def main():
     dp['config'] = config
     
     for router in [
-        # admin_router,
-        # checker_router,
-        user_router,
-        user_router_g
+        user_router
     ]:
         dp.include_router(router)
     
     scheduler.add_job(
                     Proposer,
-                    IntervalTrigger(minutes=60),
+                    IntervalTrigger(minutes=config_toml['proposals']['time_sleep']),
                     next_run_time=datetime.now(),
                     replace_existing=True
                 )

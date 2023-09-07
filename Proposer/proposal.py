@@ -105,27 +105,14 @@ class Proposal:
     def create_text(self, proposal_id: int, data: dict):
         explorer_url = config_toml['proposal']["explorer"]
 
-        key = 'messages'
-
-        # for key in keys:
-        if data.get(key):
-            message = f"🔥 {self.name_network} - Proposal {proposal_id} 🔥\n<b>{data[key][0]['content']['title']}</b> \n\n" + \
-                    f"Start_Voting:\n\t\t{data['voting_start_time']}\n" + \
-                    f"End_Voting:\n\t\t{data['voting_end_time']}"
-
-            if data[key][0]["content"].get('plan'):
-                message += f"\n\n<b>*--*UPGRADE*--*</b>\n\nHEIGHT: {data[key][0]['content']['plan']['height']}\n" + \
-                        f"Name: {data[key][0]['content']['plan']['name']}"
-            
-        else:
-
-            message = f"🔥 {self.name_network} - Proposal {proposal_id} 🔥\n<b>{data['content']['title']}</b> \n\n" + \
-                            f"Start_Voting:\n\t\t{data['voting_start_time']}\n" + \
-                            f"End_Voting:\n\t\t{data['voting_end_time']}"
-            
-            if data["content"].get('plan'):
-                message += f"\n\n<b>*--*UPGRADE*--*</b>\n\nHEIGHT: {data['content']['plan']['height']}\n" + \
-                        f"Name: {data['content']['plan']['name']}"
+        message = f"🔥 {self.name_network} - Proposal {proposal_id} 🔥\n<b>{data['content']['title']}</b> \n\n" + \
+                        f"Start_Voting:\n\t\t{data['voting_start_time']}\n" + \
+                        f"End_Voting:\n\t\t{data['voting_end_time']}"
+        
+        if data["content"].get('plan'):
+            message += f"\n\n<b>*--*UPGRADE*--*</b>\n\nHEIGHT: {data['content']['plan']['height']}\n" + \
+                    f"Name: {data['content']['plan']['name']}\n" + \
+                    f"Info: {data['content']['plan']['info']}"
 
             
 
@@ -172,12 +159,12 @@ class Proposal:
     
 
 async def Proposer(bot: Bot):
-    log_id = work_json_id.get_json()['id']
+    log_id = work_json_id.get_json()
     network =  config_toml['proposal']["network"]
     log.info("START")
     try:
         proposer = Proposal(
-            log_id=log_id,
+            log_id=log_id['id'],
             bot = bot,
             bin=config_toml['proposal']["bin"],
             name_network=network,
@@ -200,6 +187,10 @@ async def Proposer(bot: Bot):
                     
             data[id][network] = sorted(data[id][network], reverse=True)
             work_json.set_json(data=data)
+    
+        log_id['id'] += 1 
+
+        work_json_id.set_json(log_id)
 
     except Exception as e:
         message = f"<b>Proposer\nlog_id: {log_id}</b> \n\n "

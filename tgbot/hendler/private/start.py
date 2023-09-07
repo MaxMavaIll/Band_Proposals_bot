@@ -16,21 +16,21 @@ from tgbot.filters.for_all.filters import AdminFilter
 #from tgbot.keyboard.user.inline import 
 from tgbot.config import Config
 
-user_router.message.filter(AdminFilter())
+# user_router.message.filter(AdminFilter())
 
 
-@user_router.message(Command(commands=["start_a"]))
-async def start( message: Message, state: FSMContext):
+# @user_router.message(Command(commands=["start_a"]))
+# async def start( message: Message, state: FSMContext):
     
     
     
-    await message.answer(f"Hallo admin {message.from_user.first_name} private!! ")
+#     await message.answer(f"Hallo admin {message.from_user.first_name} private!! ")
 
     
-@user_router.message(Command(commands=["admins"]))
-async def start( message: Message, state: FSMContext, config: Config):
-    index=1
-    for id in config.tg_bot.admin_ids:
-        await message.answer(f"I have {index}. {id}!! ")
-        index+=1
+# @user_router.message(Command(commands=["admins"]))
+# async def start( message: Message, state: FSMContext, config: Config):
+#     index=1
+#     for id in config.tg_bot.admin_ids:
+#         await message.answer(f"I have {index}. {id}!! ")
+#         index+=1
 
