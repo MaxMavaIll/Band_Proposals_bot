@@ -39,7 +39,7 @@ async def main():
     
     scheduler.add_job(
                     Proposer,
-                    IntervalTrigger(minutes=config_toml['proposals']['time_sleep']),
+                    IntervalTrigger(minutes=config_toml['proposal']['time_sleep']),
                     next_run_time=datetime.now(),
                     replace_existing=True
                 )
